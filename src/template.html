@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+    <section class="sidebar">
+        <h1>Menu</h1>
+
+        <div class="side-projects">
+            <h3>Projects</h3>
+
+            <div class="side-project-buttons">
+                <button class="side-task-btn" id="add-project">+ Add Project</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="main">
+        <h1>To-Do List App</h1>
+        
+        <div class="main-container">
+            <h1 id="project-name">Today</h1>
+            
+            <div class="main-tasks">
+                <button id="add-new-task">+ Add New Task</button>
+                <ul id="task-items">
+                    
+                </ul>
+            </div>
+
+            <!-- Modal -->
+<div id="task-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Add New Task</h2>
+        <form id="task-form">
+            <div class="form-group">
+                <label for="new-title">Title</label>
+                <input type="text" id="new-title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="new-desc">Description</label>
+                <textarea id="new-desc" name="description" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="new-due">Due Date</label>
+                <input type="date" id="new-due" name="dueDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="new-priority">Priority</label>
+                <select id="new-priority" name="priority">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+
+            <button type="submit" class="save-btn">Add Task</button>
+        </form>
+    </div>
+</div>
+        </div>
+    </section>
+</body>
+</html>
