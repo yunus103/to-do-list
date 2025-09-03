@@ -1,5 +1,5 @@
 import { Projects } from "../projects";
-import { addProjectListener } from "./listener";
+import { addProjectListener, deleteListener } from "./listener";
 
 export function renderProjectList() {
     const sideProjectsContainer = document.querySelector('.side-projects');
@@ -13,23 +13,37 @@ export function renderProjectList() {
         const projectListItem = document.createElement('div');
         projectListItem.classList.add('side-project-buttons');
 
+        const sideButtons = document.querySelectorAll('.side-task-btn');
+
         const projectBtn = document.createElement('button');
         projectBtn.dataset.projectId = item.projectId;
         projectBtn.classList.add('side-task-btn');
         projectBtn.textContent = item.projectTitle;
 
-        projectListItem.append(projectBtn);
+
+        // Delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('delete-project-btn');
+        deleteBtn.textContent = '×'; // small cross
+        deleteBtn.title = 'Delete Project';
+
+
+        // Append buttons to container
+        projectListItem.append(projectBtn, deleteBtn);
         sideProjectsContainer.append(projectListItem);
-    });
+
+        // Delete functionality
+        deleteListener();
+        });
     addProjectListener();
 }
 
 export function renderMainSection() {
     const projectName = document.getElementById('project-name');
     const currentProject = Projects.projectList.find(p => p.projectId === Projects.currentProjectId);
-    projectName.textContent = currentProject.projectTitle;
-
-
+    if(currentProject) {
+        projectName.textContent = currentProject.projectTitle;
+    
     const ul = document.getElementById("task-items");
 
     ul.innerHTML = currentProject.taskList.map((task, index) => `
@@ -75,4 +89,7 @@ export function renderMainSection() {
         </div>
     </li>
     `).join("");
+    } else {
+        projectName.textContent = "Tasks";
+    }
 }

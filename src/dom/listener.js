@@ -129,3 +129,30 @@ export function addProjectListener() {
     });
 
 }
+
+export function deleteListener() {
+    const deleteBtns = document.querySelectorAll('.delete-project-btn');
+
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevent selecting the project
+
+            const projectItem = e.target.closest('.side-project-buttons'); // parent container
+            if (!projectItem) return;
+
+            const sideTaskBtn = projectItem.querySelector('.side-task-btn'); // main button
+            const deletedProjectId = sideTaskBtn.dataset.projectId;
+            console.log(deletedProjectId);
+
+            // Find the project object and delete it
+            const projectObj = Projects.projectList.find(p => p.projectId == deletedProjectId);
+            if (projectObj) {
+                projectObj.deleteProject();
+            }
+
+            // Re-render sidebar and main section
+            renderProjectList();
+            renderMainSection();
+        });
+    });
+}

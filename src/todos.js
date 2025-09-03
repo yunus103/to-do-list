@@ -9,15 +9,20 @@ export class ToDos {
         this.isCompleted = false;
         this.project = Projects.currentProjectId;
 
-        Projects.projectList.find(p => p.projectId === Projects.currentProjectId).addToList(this);
+        Projects.projectList.find(
+            p => p.projectId === Projects.currentProjectId
+        ).addToList(this);
+
+        Projects.projectList[0]?.saveToLocalStorage(); // sync
     }
 
     toggleCompleted() {
         this.isCompleted = !this.isCompleted;
+        Projects.projectList[0]?.saveToLocalStorage(); // sync
     }
 
     changePriority(newPriority) {
         this.priority = newPriority;
+        Projects.projectList[0]?.saveToLocalStorage(); // sync
     }
-
 }

@@ -40,7 +40,6 @@ body {
 
 .side-project-buttons {
     display: flex;
-    flex-direction: column;
     gap: 0.8rem;
     padding-left: 1.7rem;
 }
@@ -56,6 +55,10 @@ body {
     transition: color 0.3s ease;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
 }
 
 .side-task-btn:hover {
@@ -299,4 +302,20 @@ input[type="checkbox"] {
 
 .save-btn:hover {
     background: #0056b3;
+}
+
+.delete-project-btn {
+    background: transparent;
+    border: none;
+    color: red;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 2px 5px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.delete-project-btn:hover {
+    background: rgba(255,0,0,0.2);
 }
