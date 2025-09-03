@@ -6,14 +6,14 @@
 
 body {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     padding: 1.2rem;
     gap: 1rem;
 }
 
 .sidebar {
     border-radius: 30px;
-    height: 100%;
+    min-height: 100%;
     width: 25%;
     background-color: #F4F4F4;
     padding: 2rem;
@@ -55,16 +55,19 @@ body {
     padding: 10px 15px;
     transition: color 0.3s ease;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 .side-task-btn:hover {
     background: #d5d5d5;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .side-task-btn:active {
     background: #c4c4c4;
     scale: 0.98;
     border-radius: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 #add-project {
@@ -162,14 +165,22 @@ input[type="checkbox"] {
 /* Hide details by default */
 .task-details {
     display: none;
-    padding-left: 35px; /* indent for clarity */
     margin-top: 5px;
     color: #555;
+    background: #f8f8f8;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
 /* Optional: smooth expand/collapse */
 .task-details.show {
     display: block;
+    max-height: 500px; /* enough to fit content */
+    padding: 15px;
 }
 
 .task-details {
